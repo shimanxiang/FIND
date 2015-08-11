@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd  
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd  
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+	<!-- 用户 -->
+ 	<bean id="regist" class="find.action.useraction.RegistAction" scope="prototype"> 	<!-- 意思是每请求一次创建一个action -->
+		<property name="userservice" ref="userservice" />
+		<property name="mailservice" ref="mailservice" />
+	</bean>
+	
+	<bean id="login" class="find.action.useraction.LoginAction" scope="prototype"> 	
+		<property name="classservice" ref="classservice" />
+	</bean>
+	
+	<bean id="loginout" class="find.action.useraction.LoginAction" scope="prototype"> 	
+		<property name="classservice" ref="classservice" />
+	</bean>
+	
+	<bean id="getuserlisto" class="find.action.useraction.GetUserListAction" scope="prototype"> 	
+		<property name="classservice" ref="classservice" />
+	</bean>
+	
+	<bean id="confirmaccount" class="find.action.useraction.FindpasswordAction" scope="prototype"> 	
+		<property name="userservice" ref="userservice" />
+		<property name="mailservice" ref="mailservice" />
+	</bean>
+	
+	<bean id="safetyverification" class="find.action.useraction.FindpasswordAction" scope="prototype"> 	
+		<property name="userservice" ref="userservice" />
+		<property name="mailservice" ref="mailservice" />
+	</bean>
+	
+	<bean id="resetpassword" class="find.action.useraction.FindpasswordAction" scope="prototype"> 	
+		<property name="userservice" ref="userservice" />
+		<property name="mailservice" ref="mailservice" />
+	</bean>
+	<!-- 查询用户基本信息 -->
+	<bean id="queryUserBaseInfo" class="find.action.useraction.UserInformationAction" scope="prototype"> 	
+		<property name="userservice" ref="userservice" />
+		<property name="fileservice" ref="fileservice" />
+		<property name="userclassservice" ref="userclassservice" />
+	</bean>
+	<!-- 分页获得用户文件 -->
+	<bean id="QueryUserFile" class="find.action.useraction.UserInformationAction" scope="prototype"> 	
+		<property name="userservice" ref="userservice" />
+		<property name="fileservice" ref="fileservice" />
+		<property name="userclassservice" ref="userclassservice" />
+	</bean>
+	
+	<bean id="QueryUserFollowClass" class="find.action.useraction.UserInformationAction" scope="prototype"> 	
+		<property name="userservice" ref="userservice" />
+		<property name="fileservice" ref="fileservice" />
+		<property name="userclassservice" ref="userclassservice" />
+	</bean>
+	
+	
+	<!-- 班级 -->
+	<bean id="createclass" class="find.action.classaction.ClassroomManagerAction" scope="prototype"> 	
+		<property name="classservice" ref="classservice" />
+	</bean>
+	
+	<bean id="searchclass" class="find.action.classaction.SearchClassAction" scope="prototype"> 	
+		<property name="classservice" ref="classservice" />
+	</bean>
+	
+	<bean id="joinclass" class="find.action.classaction.JoinClassAction" scope="prototype"> 	
+		<property name="classservice" ref="classservice" />
+		<property name="userservice" ref="userservice" />
+		<property name="userclassservice" ref="userclassservice" />
+	</bean>
+	
+	<bean id="UserFollowClass" class="find.action.classaction.JoinClassAction" scope="prototype"> 	
+		<property name="classservice" ref="classservice" />
+		<property name="userservice" ref="userservice" />
+		<property name="userclassservice" ref="userclassservice" />
+	</bean>
+	
+	<bean id="QueryClassFile" class="find.action.classaction.ClassInformationAction" scope="prototype"> 	
+		<property name="classservice" ref="classservice" />
+		<property name="fileservice" ref="fileservice" />
+		<property name="userclassservice" ref="userclassservice" />
+	</bean>
+	
+	<bean id="queryClassBaseInfo" class="find.action.classaction.ClassInformationAction" scope="prototype"> 	
+		<property name="classservice" ref="classservice" />
+		<property name="fileservice" ref="fileservice" />
+		<property name="userclassservice" ref="userclassservice" />
+	</bean>
+	
+	<bean id="QueryClassUser" class="find.action.classaction.ClassInformationAction" scope="prototype"> 	
+		<property name="classservice" ref="classservice" />
+		<property name="fileservice" ref="fileservice" />
+		<property name="userclassservice" ref="userclassservice" />
+	</bean>
+	
+	<bean id="QueryClassFollowUser" class="find.action.classaction.ClassInformationAction" scope="prototype"> 	
+		<property name="classservice" ref="classservice" />
+		<property name="fileservice" ref="fileservice" />
+		<property name="userclassservice" ref="userclassservice" />
+	</bean>
+	
+	<!-- 文件 -->
+	<bean id="file" class="find.action.fileaction.FileAction" scope="prototype"> 	
+	</bean>
+	
+</beans>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts> 
+ 
+    <constant name="struts.multipart.saveDir" value="/tmp"/>
+    <constant name="struts.multipart.maxSize" value="1000000000"/> 
+    <package name="find" extends="struts-default"> 
+    
+    	<interceptors>
+    		<!-- 登陆拦截器 -->
+			<interceptor name="loginInterceptor"
+				class="find.interceptor.LoginInterceptor">
+			</interceptor>
+			
+			<interceptor name="authorityInterceptor"
+				class="find.interceptor.AuthorityInterceptor">
+			</interceptor>
+    	</interceptors>
+    	
+    	<global-results>
+			<result name="login" type="redirect">/login.html</result>
+		</global-results>
+		
+    	<!-- 注册 -->
+        <action name="regist" class="find.action.useraction.RegistAction"> 
+            <result name="success">/success.jsp</result> 
+        </action> 
+        
+        <!-- 登录 -->
+        <action name="login" class="find.action.useraction.LoginAction" method="execute"> 
+            <result name="success">/success.jsp</result> 
+        </action> 
+        
+        <!-- 退出 -->
+        <action name="loginout" class="find.action.useraction.LoginAction" method="logout"> 
+            <result name="success">/success.jsp</result> 
+        </action>
+        
+        <!-- 找回密码-确认账号 -->
+        <action name="confirmaccount" class="find.action.useraction.FindpasswordAction" method="execute"> 
+            <result name="success">/success.jsp</result> 
+            <interceptor-ref name="loginInterceptor"/>
+        </action>
+        
+        <!-- 找回密码-安全验证 -->
+        <action name="safetyverification" class="find.action.useraction.FindpasswordAction" method="safetyverification"> 
+            <result name="success">/success.jsp</result> 
+            <interceptor-ref name="loginInterceptor"/>
+        </action>
+        
+        <!-- 找回密码-重置密码 -->
+         <action name="resetpassword" class="find.action.useraction.FindpasswordAction" method="resetpassword"> 
+            <result name="success">/success.jsp</result> 
+            <interceptor-ref name="loginInterceptor"/>
+        </action>
+        
+         <!-- 查询用户基本信息  -->
+         <action name="queryUserBaseInfo" class="find.action.useraction.UserInformationAction" method="QueryUserBaseInfo"> 
+            <result name="success">/success.jsp</result> 
+           <!--  <interceptor-ref name="loginInterceptor"/> -->
+        </action>
+        
+         <!-- 分页获得用户文件 -->
+         <action name="QueryUserFile" class="find.action.useraction.UserInformationAction" method="QueryUserFile"> 
+            <result name="success">/success.jsp</result> 
+            <!-- <interceptor-ref name="loginInterceptor"/> -->
+        </action>
+        
+        <!-- 查询用户关注的班级 -->
+         <action name="QueryUserFollowClass" class="find.action.useraction.UserInformationAction" method="QueryUserFollowClass"> 
+            <result name="success">/success.jsp</result> 
+            <!-- <interceptor-ref name="loginInterceptor"/> -->
+        </action>
+        
+         <!-- 搜索班级 -->
+         <action name="searchclass" class="find.action.classaction.SearchClassAction"> 
+            <result name="success">/success.jsp</result> 
+            <!-- <interceptor-ref name="loginInterceptor"/> -->
+        </action> 
+        
+        <!-- 创建班级 -->
+        <action name="createclass" class="find.action.classaction.ClassroomManagerAction" method="execute"> 
+            <result name="success">/success.jsp</result> 
+            <!-- <interceptor-ref name="loginInterceptor"/> -->
+        </action> 
+        
+        <!-- 加入班级 -->
+        <action name="joinclass" class="find.action.classaction.JoinClassAction"> 
+            <result name="success">/success.jsp</result> 
+           <!--  <interceptor-ref name="loginInterceptor"/> -->
+        </action> 
+        
+         <!-- 关注班级 -->
+        <action name="UserFollowClass" class="find.action.classaction.JoinClassAction" method="UserFollowClass"> 
+            <result name="success">/success.jsp</result> 
+            <!-- <interceptor-ref name="loginInterceptor"/> -->
+        </action> 
+        
+        <!-- 查询班级文件 -->
+        <action name="QueryClassFile" class="find.action.classaction.ClassInformationAction" method="QueryClassFile"> 
+            <result name="success">/success.jsp</result> 
+            <!-- <interceptor-ref name="loginInterceptor"/> -->
+        </action> 
+        
+        <!-- 查询班级基本信息 -->
+        <action name="queryClassBaseInfo" class="find.action.classaction.ClassInformationAction"> 
+            <result name="success">/success.jsp</result> 
+            <!-- <interceptor-ref name="loginInterceptor"/> -->
+        </action>
+        
+        <!-- 查询班级用户 -->
+        <action name="QueryClassUser" class="find.action.classaction.ClassInformationAction" method="QueryClassUser"> 
+            <result name="success">/success.jsp</result> 
+            <!-- <interceptor-ref name="loginInterceptor"/> -->
+        </action>
+        
+        <!-- 查询关注该班级的用户 -->
+        <action name="QueryClassFollowUser" class="find.action.classaction.ClassInformationAction" method="QueryClassFollowUser"> 
+            <result name="success">/success.jsp</result> 
+            <!-- <interceptor-ref name="loginInterceptor"/> -->
+        </action>
+      
+      
+      
+         
+        <!-- 文件 -->
+        <action name="file" class="find.action.fileaction.FileAction" method="execute"> 
+            <result name="success">/success.jsp</result>
+            <!-- <interceptor-ref name="loginInterceptor"/>  -->
+        </action> 
+        
+        <action name="followclass" class="find.action.classaction.FollowClassAction"> 
+            <result name="success">/success.jsp</result> 
+            <interceptor-ref name="loginInterceptor"/>
+        </action> 
+        
+        <action name="getuserlisto" class="find.action.useraction.GetUserListAction"> 
+            <result name="success">/success.jsp</result> 
+            <interceptor-ref name="loginInterceptor"/>
+        </action> 
+    </package> 
+</struts> 

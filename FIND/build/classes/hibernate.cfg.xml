@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+
+	<session-factory>
+	 
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect </property>
+		<mapping resource="find/entity/User.hbm.xml" />
+		<mapping resource="find/entity/Class.hbm.xml" />
+		<mapping resource="find/entity/Photo.hbm.xml" />
+		<mapping resource="find/entity/Video.hbm.xml" />
+		<mapping resource="find/entity/Word.hbm.xml" />
+		<mapping resource="find/entity/Corporation.hbm.xml" />
+		<mapping resource="find/entity/UserClassroom.hbm.xml" />
+	</session-factory>
+
+</hibernate-configuration>
